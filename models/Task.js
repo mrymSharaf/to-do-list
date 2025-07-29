@@ -6,11 +6,14 @@ const taskSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    completed: Boolean,
-    list: [{
+    completed: {
+        type:Boolean,
+        default:false
+    },
+    list: {
         type: Schema.Types.ObjectId,
         ref: 'List',
-    }]
+    }
 })
 
 const Task = model('Task', taskSchema)

@@ -5,7 +5,7 @@ const listSchema = new Schema({
         type: String,
         required: [true, "List name is required"],
     },
-    task: [{
+    tasks: [{
         type: Schema.Types.ObjectId,
         ref: 'Task'
     }]
