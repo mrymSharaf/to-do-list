@@ -4,26 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../auth/main.css">
     <title>Sign Up </title>
 </head>
 
 <body>
-    <h1>Sign Up</h1>
-    <form action="/auth/signUp" method="post">
-        <label for="username">username:</label>
-        <input type="text" name="username" id="username">
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form action="/auth/signUp" method="post">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
 
-        <label for="password">password:</label>
-        <input type="password" name="password" id="password">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password">
 
-        <button>Sign Up</button>
-    </form>
+            <a href="/auth/login" class="login-link">Already Have an Account? </a>
 
-    <% if (error) { %>
-            <p style="color:red" class="error">
+            <button>Sign Up</button>
+        </form>
+
+        <% if (error) { %>
+            <p class="error">
                 <%= error %>
             </p>
             <% } %>
+    </div>
 </body>
 
 </html>

@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../auth/main.css">
     <title>Login</title>
 </head>
+
 <body>
-    <h1>Log in</h1>
-    <form action="/auth/login" method="post">
-        <label for="username">username:</label>
-        <input type="text" name="username" id="username">
+    <div class="container">
+        <h1>Log in</h1>
+        <form action="/auth/login" method="post">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
 
-        <label for="password">password:</label>
-        <input type="password" name="password" id="password">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password">
 
-        <button>Log in</button>
-    </form>
+            <button>Log in</button>
+        </form>
 
-    <% if (error) { %>
-            <p style="color:red" class="error">
+        <% if (error) { %>
+            <p class="error">
                 <%= error %>
             </p>
             <% } %>
+    </div>
 </body>
+
 </html>
