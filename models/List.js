@@ -8,7 +8,11 @@ const listSchema = new Schema({
     tasks: [{
         type: Schema.Types.ObjectId,
         ref: 'Task'
-    }]
+    }],
+    user:{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 const List = model('List', listSchema)

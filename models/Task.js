@@ -13,6 +13,10 @@ const taskSchema = new Schema({
     list: {
         type: Schema.Types.ObjectId,
         ref: 'List',
+    },
+    user:{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 })
 
