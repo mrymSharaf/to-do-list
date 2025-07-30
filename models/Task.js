@@ -13,12 +13,13 @@ const taskSchema = new Schema({
     list: {
         type: Schema.Types.ObjectId,
         ref: 'List',
+        required:true
     },
     user:{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
-})
+},{timestamps:true})
 
 const Task = model('Task', taskSchema)
 module.exports = Task

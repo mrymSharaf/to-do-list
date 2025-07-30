@@ -29,7 +29,7 @@ conntectToDB()
 app.use('/auth', authRoute)
 // app.use(isSignedIn)
 app.use('/lists', listRoute)
-// app.use('/tasks', taskRoute)
+app.use('/tasks', taskRoute)
 
 const port = process.env.PORT || 3000
 

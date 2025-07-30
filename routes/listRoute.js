@@ -44,6 +44,7 @@ router.put('/edit/:id', async (req, res) => {
     }
 })
 
+//add validation when the delete btn is clickd it askes the user if they are sure they want to delete because the task in the list would be deleteda
 router.delete('/delete/:id', async (req, res) => {
     try {
         const deletedList = await List.findByIdAndDelete(req.params.id)

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+</head>
+<body>
+    <form action="/tasks/edit/<%= foundTask._id%>?_method=put" method="post">
+        <label for="content"> Update task</label>
+        <input value="<%= foundTask.content  %>" type="text" name="content">
+
+        <label for="dueAt"> Due At: </label>
+        <input  value="<%= foundTask.dueAt  %>"  type="date" name="dueAt">
+
+        <label for="completed">completed: </label>
+        <input value="<%= foundTask.completed  %>" <% if(foundTask.completed){ %> checked<% }%> type="checkbox" name="completed">
+
+         <button type="submit">Update</button>
+    </form>
+</body>
+</html>
