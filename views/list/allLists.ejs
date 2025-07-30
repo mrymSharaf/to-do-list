@@ -6,9 +6,21 @@
     <title>All Lists</title>
 </head>
 <body>
-    <h1>All Lists </h1>
-    <% allLists.forEach(list => {%>
-        <p>List Name: <%= list.name %></p>
-   <% }) %>
+    <h1>All Lists</h1>
+
+    <% allLists.forEach(list => { %>
+        <div>
+            <p>List Name: <%= list.name %></p>
+            
+            <a href="/lists/<%= list._id %>">View</a>
+
+            <a href="/lists/edit/<%= list._id %>">Edit</a>
+
+            <form action="/lists/delete/<%= list._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        <hr>
+    <% }) %>
 </body>
 </html>

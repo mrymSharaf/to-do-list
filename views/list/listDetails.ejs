@@ -8,7 +8,9 @@
 <body>
         <h3>Name: <%= foundList.name %></h3>
         <ol>
-            <li> <%= foundList.tasks.content %></li>
+            <li> <% foundList.tasks.forEach( task=>{ %>
+                <p><%= task.content %></p>
+           <% }) %></li>
         </ol>
 </body>
 </html>
