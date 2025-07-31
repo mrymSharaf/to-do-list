@@ -1,7 +1,10 @@
 const { model, Schema } = require('mongoose')
 
 const taskSchema = new Schema({
-    content: String,
+    content: {
+        type:String,
+        required:true
+    },
     dueAt: {
         type: Date,
         default: Date.now
@@ -17,7 +20,7 @@ const taskSchema = new Schema({
     },
     user:{
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
     }
 },{timestamps:true})
 

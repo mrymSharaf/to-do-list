@@ -26,12 +26,12 @@ app.use(passUserToView)
 app.set("view engine", "ejs")
 conntectToDB()
 
-app.get('/', (req, res) => {
-    res.render('home.ejs')
-})
+// app.get('/', (req, res) => {
+//     res.render('home.ejs')
+// })
 
 app.use('/auth', authRoute)
-// app.use(isSignedIn)
+app.use(isSignedIn)
 app.use('/lists', listRoute)
 app.use('/tasks', taskRoute)
 

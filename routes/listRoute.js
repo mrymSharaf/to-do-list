@@ -8,9 +8,11 @@ router.get('/new', (req, res) => {
 
 router.post('/new', async (req, res) => {
     try {
-        const addList = await List.create(req.body)
-
-        res.redirect('/lists')
+        const addList = await List.create({
+            name: req.body.name,
+            user: req.session.user._id
+        })
+        res.redirect('/auth/welcome')
     } catch (error) {
         console.log(error)
     }
@@ -18,7 +20,7 @@ router.post('/new', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const allLists = await List.find()
+        const allLists = await List.find(req.session.user._id)
         res.render('list/allLists.ejs', { allLists: allLists })
     } catch (error) {
         console.log(error)
@@ -27,8 +29,8 @@ router.get('/', async (req, res) => {
 
 router.get('/edit/:id', async (req, res) => {
     try {
-        const foundList = await List.findById(req.params.id)
-        res.render('list/updateList.ejs', { foundList: foundList})
+        const foundList = await List.findOne({ _id: req.params.id, user: req.session.user._id })
+        res.render('list/updateList.ejs', { foundList: foundList })
     }
     catch (error) {
         console.log(error)
@@ -37,7 +39,7 @@ router.get('/edit/:id', async (req, res) => {
 
 router.put('/edit/:id', async (req, res) => {
     try {
-        const updatedList = await List.findByIdAndUpdate(req.params.id, req.body)
+        const updatedList = await List.findByIdAndUpdate({ _id: req.params.id, user: req.session.user._id }, req.body)
         res.redirect('/lists')
     } catch (e) {
         console.log(e)
@@ -47,7 +49,11 @@ router.put('/edit/:id', async (req, res) => {
 //add validation when the delete btn is clickd it askes the user if they are sure they want to delete because the task in the list would be deleteda
 router.delete('/delete/:id', async (req, res) => {
     try {
-        const deletedList = await List.findByIdAndDelete(req.params.id)
+        const deletedList = await List.findByIdAndDelete({ _id: req.params.id, user: req.session.user._id })
+
+        if (deletedList) {
+            // await
+        }
         res.redirect('/lists')
     } catch (e) {
         console.log(e)
@@ -56,8 +62,12 @@ router.delete('/delete/:id', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const foundList = await List.findById(req.params.id).populate('tasks')
-        res.render('list/listDetails.ejs', { foundList: foundList })
+        const foundList = await List.findById(req.params.id).populate('tasks');
+
+        if (!foundList || foundList.user.toString() !== req.session.user._id.toString()) {
+            return res.status(403).send("Access denied")
+        }
+        res.render('list/listDetails.ejs', { foundList })
     } catch (error) {
         console.log(error)
     }

@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../models/User')
+const List = require('../models/List')
 const bcrypt = require('bcrypt')
 
 router.get('/signUp', (req, res) => {
@@ -54,15 +55,24 @@ router.post('/signUp', async (req, res) => {
     }
 })
 
-router.get("/welcome", (req, res) => {
+
+router.get("/welcome", async (req, res) => {
     if (!req.session.user) {
         return res.redirect("/auth/login")
     }
-
-    res.render("auth/welcome.ejs", {
-        username: req.session.user.username
-    })
+    
+    try {
+        // console.log("Logged in user:", req.session.user)
+        const lists = await List.find({ user: req.session.user._id })
+        res.render("auth/welcome.ejs", {
+            user: req.session.user,
+            lists
+        })
+    } catch (error) {
+        console.log(error)
+    }
 })
+
 
 router.get("/login", (req, res) => {
     res.render("auth/login.ejs", { error: null })

@@ -6,11 +6,19 @@
     <title>List Details</title>
 </head>
 <body>
-        <h3>Name: <%= foundList.name %></h3>
-        <ol>
-            <li> <% foundList.tasks.forEach( task=>{ %>
-                <p><%= task.content %></p>
-           <% }) %></li>
-        </ol>
+<h1><%= foundList.name %></h1>
+
+<ul>
+    <% if (foundList.tasks.length > 0) { %>
+        <% foundList.tasks.forEach(task => { %>
+            <li><%= task.content %> - <%= task.completed ? 'Completed' : 'Not Completed' %></li>
+        <% }) %>
+    <% } else { %>
+        <li>No tasks in this list yet.</li>
+    <% } %>
+
+</ul>
+
+
 </body>
 </html>

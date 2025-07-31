@@ -8,14 +8,15 @@
 <body>
     <h1>Add Task</h1>
     <form action="/tasks/new" method="post">
+
         <label for="content"> Add new task</label>
-        <input type="text" name="content">
+        <input type="text" name="content" id="content">
 
         <label for="dueAt"> Due At: </label>
-        <input type="date" name="dueAt">
+        <input type="date" name="dueAt" id="dueAt">
 
-        <label for="completed">completed: </label>
-        <input type="checkbox" name="completed">
+        <!-- <label for="completed">completed: </label>
+        <input type="checkbox" name="completed"> -->
 
         <label for="list">List</label>
         <select id="list" name="list" required>
@@ -24,7 +25,7 @@
              <option value="<%= list._id %>"><%= list.name %></option>
                 <% }) %>
         </select>
-        
+
          <button type="submit">Create task</button>
     </form>
 </body>

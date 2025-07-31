@@ -3,14 +3,24 @@ const Task = require('../models/Task')
 const List = require('../models/List')
 
 router.get('/new', async (req, res) => {
-    const allLists = await List.find({ user: req.session.userId })
+    const allLists = await List.find({ user: req.session.user._id })
     res.render('task/new.ejs', { allLists })
 })
 
 router.post('/new', async (req, res) => {
     try {
-        const addTask = await Task.create(req.body)
-        res.redirect('/tasks')
+        const addTask = await Task.create({
+            content: req.body.content,
+            dueAt: req.body.dueAt,
+            completed: req.body.completed,
+            list: req.body.list,
+            user: req.session.user._id
+        })
+        const foundList = await List.findById(addTask.list)
+        foundList.tasks.push(addTask._id)
+        await foundList.save()
+
+        res.redirect('/auth/welcome')
     } catch (error) {
         console.log(error)
     }
@@ -18,7 +28,7 @@ router.post('/new', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const allTasks = await Task.find({ user: req.session.userId }).populate('list')
+        const allTasks = await Task.find({ user: req.session.user._id }).populate('list')
         res.render('task/allTasks.ejs', { allTasks: allTasks })
     } catch (error) {
         console.log(error)
@@ -27,8 +37,9 @@ router.get('/', async (req, res) => {
 
 router.get('/edit/:id', async (req, res) => {
     try {
-        const foundTask = await Task.findById(req.params.id)
-        res.render('task/updateTask.ejs', { foundTask: foundTask })
+        const foundTask = await Task.findOne({ _id: req.params.id, user: req.session.user._id })
+        const allLists = await List.find({ user: req.session.user._id })
+        res.render('task/updateTask.ejs', { foundTask, allLists })
     }
     catch (error) {
         console.log(error)
@@ -37,7 +48,7 @@ router.get('/edit/:id', async (req, res) => {
 
 router.put('/edit/:id', async (req, res) => {
     try {
-        const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body)
+        const updatedTask = await Task.findByIdAndUpdate({ _id: req.params.id, user: req.session.user._id }, req.body)
         res.redirect('/tasks')//change
     } catch (e) {
         console.log(e)
@@ -47,7 +58,10 @@ router.put('/edit/:id', async (req, res) => {
 
 router.delete('/delete/:id', async (req, res) => {
     try {
-        const deletedTask = await Task.findByIdAndDelete(req.params.id)
+        const deletedTask = await Task.findByIdAndDelete({
+            _id: req.params.id,
+            user: req.session.user._id
+        })
         res.redirect('/tasks')
     } catch (e) {
         console.log(e)
@@ -56,7 +70,7 @@ router.delete('/delete/:id', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const foundTask = await Task.findById(req.params.id).populate('list')
+        const foundTask = await Task.findById({ _id: req.params.id, user: req.session.user._id }).populate('list')
         res.render('task/taskDetails.ejs', { foundTask: foundTask })
     } catch (error) {
         console.log(error)

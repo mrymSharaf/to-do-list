@@ -15,6 +15,10 @@ const userSchema = new Schema({
     lists:[{
         type: Schema.Types.ObjectId,
         ref:'List'
+    }],
+    tasks:[{
+        type: Schema.Types.ObjectId,
+        ref:'Task'
     }]
 })
 

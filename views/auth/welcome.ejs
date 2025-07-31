@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/welcomePage/main.css">
 </head>
 <body>
-    <h1>Welcome <%= username %></h1>
-    <a href="/auth/logout">Logout</a>
+    <div class="container">
+        <aside class="sidebar">
+            <h2><%= user.username %></h2>
+            <a href="/lists/new"> Create List</a>
+            <a href="/tasks/new"> Create Task</a>
+            <h3>Your Lists</h3>
+            <ul class="lists">
+                <% lists.forEach(list => { %>
+                    <li><a href="/lists/<%= list._id %>"><%= list.name %></a></li>
+                <% }) %>
+            </ul>
+            <a class="logout" href="/auth/logout">Logout</a>
+        </aside>
+        </div>
 </body>
 </html>
