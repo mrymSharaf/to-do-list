@@ -8,6 +8,8 @@
 </head>
 
 <body>
+    <%- include("../partials/navbar") %>
+    <h1>Create List</h1>
     <form action="/lists/new" method="post">
         <label for="name">List Name:</label>
         <input type="text" id="name" name="name" required>
@@ -15,7 +17,7 @@
         <button type="submit">Create List</button>
     </form>
 
-    <a href="/lists"> Back to All Lists</a>
+    <a href="/auth/welcome">Home Page</a>
 </body>
 
 </html>

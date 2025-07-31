@@ -6,6 +6,7 @@
     <title>Update Task</title>
 </head>
 <body>
+    <%- include("../partials/navbar.ejs") %>
     <form action="/tasks/edit/<%= foundTask._id%>?_method=put" method="post">
         <label for="content"> Update task</label>
         <input value="<%= foundTask.content  %>" type="text" name="content">

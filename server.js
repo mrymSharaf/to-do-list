@@ -8,6 +8,7 @@ const authRoute = require('./routes/authRoute')
 const listRoute = require('./routes/listRoute')
 const taskRoute = require('./routes/taskRoute')
 const session = require("express-session")
+const loadUserLists = require('./middleware/listLoader')
 const passUserToView = require('./middleware/passUserToView')
 const isSignedIn = require("./middleware/isSignedIn")
 
@@ -24,11 +25,9 @@ app.use(
 )
 app.use(passUserToView)
 app.set("view engine", "ejs")
+app.use(loadUserLists)
 conntectToDB()
 
-// app.get('/', (req, res) => {
-//     res.render('home.ejs')
-// })
 
 app.use('/auth', authRoute)
 app.use(isSignedIn)

@@ -18,14 +18,14 @@ router.post('/new', async (req, res) => {
     }
 })
 
-router.get('/', async (req, res) => {
-    try {
-        const allLists = await List.find(req.session.user._id)
-        res.render('list/allLists.ejs', { allLists: allLists })
-    } catch (error) {
-        console.log(error)
-    }
-})
+// router.get('/', async (req, res) => {
+//     try {
+//         const allLists = await List.find(req.session.user._id)
+//         res.render('list/allLists.ejs', { allLists: allLists })
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 
 router.get('/edit/:id', async (req, res) => {
     try {
@@ -50,11 +50,7 @@ router.put('/edit/:id', async (req, res) => {
 router.delete('/delete/:id', async (req, res) => {
     try {
         const deletedList = await List.findByIdAndDelete({ _id: req.params.id, user: req.session.user._id })
-
-        if (deletedList) {
-            // await
-        }
-        res.redirect('/lists')
+        res.redirect('/auth/welcome')
     } catch (e) {
         console.log(e)
     }
@@ -62,7 +58,7 @@ router.delete('/delete/:id', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        const foundList = await List.findById(req.params.id).populate('tasks');
+        const foundList = await List.findById(req.params.id).populate('tasks')
 
         if (!foundList || foundList.user.toString() !== req.session.user._id.toString()) {
             return res.status(403).send("Access denied")

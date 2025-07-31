@@ -4,7 +4,7 @@ const List = require('../models/List')
 const bcrypt = require('bcrypt')
 
 router.get('/signUp', (req, res) => {
-    res.render('auth/signUp.ejs', { error: null })
+    res.render('auth/signUp.ejs', { error: null }, { user: req.session.user, lists: allLists })
 })
 
 router.post('/signUp', async (req, res) => {
@@ -60,14 +60,9 @@ router.get("/welcome", async (req, res) => {
     if (!req.session.user) {
         return res.redirect("/auth/login")
     }
-    
+
     try {
-        // console.log("Logged in user:", req.session.user)
-        const lists = await List.find({ user: req.session.user._id })
-        res.render("auth/welcome.ejs", {
-            user: req.session.user,
-            lists
-        })
+        res.render("auth/welcome.ejs")
     } catch (error) {
         console.log(error)
     }
