@@ -17,15 +17,15 @@ router.post('/new', async (req, res) => {
         console.log(error)
     }
 })
-
-// router.get('/', async (req, res) => {
-//     try {
-//         const allLists = await List.find(req.session.user._id)
-//         res.render('list/allLists.ejs', { allLists: allLists })
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
+//use to display the list in the homepage in stickey notes 
+router.get('/', async (req, res) => {
+    try {
+        const allLists = await List.find(req.session.user._id)
+        res.render('list/allLists.ejs', { allLists: allLists })
+    } catch (error) {
+        console.log(error)
+    }
+})
 
 router.get('/edit/:id', async (req, res) => {
     try {

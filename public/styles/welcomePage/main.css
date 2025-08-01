@@ -1,81 +1,93 @@
 body {
     margin: 0;
+    height: 100%;
     font-family: Helvetica, Arial, sans-serif;
+    background-color: #f2f2f2;
     display: flex;
-    background: #f2f2f2;
-}
-
-.container {
-    display: flex;
-    height: 100vh;
-    width: 100%;
 }
 
 .sidebar {
-    background: #fff;
     width: 250px;
+    background-color: #fff;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .sidebar h2 {
-    margin-top: 0;
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.sidebar h3 {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 40px 0;
 }
 
 .lists {
     list-style: none;
-    padding: 0;
+    padding-left: 0;
+    margin: 0;
 }
 
 .lists li {
+    margin-bottom: 0.6rem;
+}
+
+.lists li::before {
+    content: "–";
+    margin-right: 0.5em;
+    color: #aaa;
+}
+
+.lists a {
+    text-decoration: none;
+    color: #0077cc;
+    font-weight: 500;
+}
+
+.lists a:hover {
+    color: #005fa3;
+    text-decoration: underline;
+}
+
+.create-link {
+    display: block;
+    background-color: #f0f8ff;
+    color: #0077cc;
+    text-align: center;
+    padding: 8px 10px;
+    border: 1px solid #0077cc;
+    border-radius: 4px;
     margin-bottom: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.create-link:hover {
+    background-color: #0077cc;
+    color: #fff;
 }
 
 .logout {
-    color: red;
+    color: #dc3545;
     text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
 }
 
-/* Main Content */
-.main-content {
-    flex: 1;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-}
-
-.day-selector {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.day-btn {
-    border: none;
-    background: #eee;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.day-btn.selected {
-    background: black;
-    color: white;
-}
-
-.tasks {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.task {
-    padding: 15px;
-    background-color: #e6f0ff;
-    border-radius: 10px;
-    font-size: 16px;
+.logout:hover {
+    text-decoration: underline;
 }

@@ -1,10 +1,9 @@
 const router = require('express').Router()
 const User = require('../models/User')
-const List = require('../models/List')
 const bcrypt = require('bcrypt')
 
 router.get('/signUp', (req, res) => {
-    res.render('auth/signUp.ejs', { error: null }, { user: req.session.user, lists: allLists })
+    res.render('auth/signUp.ejs', { error: null })
 })
 
 router.post('/signUp', async (req, res) => {
@@ -27,7 +26,7 @@ router.post('/signUp', async (req, res) => {
             })
         }
 
-        const existingUser = await User.findOne({ username });
+        const existingUser = await User.findOne({ username })
         if (existingUser) {
             return res.render("auth/signUp", {
                 error: "Username is already taken."
@@ -35,7 +34,7 @@ router.post('/signUp', async (req, res) => {
             })
         }
 
-        const hashedPassword = bcrypt.hashSync(password, 10);
+        const hashedPassword = bcrypt.hashSync(password, 10)
         const newUser = {
             username,
             password: hashedPassword,
@@ -48,7 +47,7 @@ router.post('/signUp', async (req, res) => {
         res.redirect("/auth/welcome")
 
     } catch (error) {
-        console.error("Sign Up error:", error);
+        console.error("Sign Up error:", error)
         res.render("auth/signUp", {
             error: "Something went wrong. Please try again."
         })
@@ -75,10 +74,10 @@ router.get("/login", (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const userInDatabase = await User.findOne({ username: req.body.username });
+        const userInDatabase = await User.findOne({ username: req.body.username })
 
         if (!userInDatabase) {
-            return res.render("auth/login", { error: "Username not found." });
+            return res.render("auth/login", { error: "Username not found." })
         }
 
         const validPassword = bcrypt.compareSync(
@@ -87,7 +86,7 @@ router.post('/login', async (req, res) => {
         )
 
         if (!validPassword) {
-            return res.render("auth/login", { error: "Incorrect password." });
+            return res.render("auth/login", { error: "Incorrect password." })
         }
 
         req.session.user = {

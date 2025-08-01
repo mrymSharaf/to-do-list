@@ -10,9 +10,11 @@
 <% if (user) { %>
     <div class="container">
         <aside class="sidebar">
-            <h2><%= user.username %></h2>
-            <a href="/lists/new">Create List</a>
-            <a href="/tasks/new">Create Task</a>
+            <h2>Hi <%= user.username %></h2>
+             <hr class="divider">
+            <a href="/lists/new" class="create-link">Create List</a>
+            <a href="/tasks/new"class="create-link">Create Task</a>
+             <hr class="divider">
             <h3>Your Lists</h3>
             <ul class="lists">
                 <% lists.forEach(list => { %>

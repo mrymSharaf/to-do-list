@@ -12,9 +12,6 @@
         <p><%= foundTask.completed %></p>
         <p><%= foundTask.list.name %></p>
         <a href="/tasks/edit/<%= foundTask._id %>">Edit</a>
-        <form action="/tasks/delete/<%= foundTask._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete</button>
-        </form>
         
 </body>
 </html>
