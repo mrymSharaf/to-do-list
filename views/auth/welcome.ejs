@@ -25,13 +25,14 @@
               <% }) %>
             </ul>
           <% } else { %>
-            <p>No tasks in this list yet.</p>
+            <p>No tasks in this list.</p>
           <% } %>
         </div>
       <% }) %>
     </div>
   <% } else { %>
-    <p>You have no lists yet. <a href="/lists/new">Create one</a>.</p>
+    <h1>Welcome <%= user.username %></h1>
+    <a href="/lists/new"> Start Planning </a>
   <% } %>
   </main>
 </body>
