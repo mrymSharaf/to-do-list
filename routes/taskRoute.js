@@ -19,8 +19,7 @@ router.post('/new', async (req, res) => {
         const foundList = await List.findById(addTask.list)
         foundList.tasks.push(addTask._id)
         await foundList.save()
-
-        res.redirect('/auth/welcome')
+        res.redirect(`/lists/${foundList._id}`) 
     } catch (error) {
         console.log(error)
     }

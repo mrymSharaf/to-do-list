@@ -9,29 +9,32 @@
 
 <body>
     <%- include("../partials/navbar.ejs") %>
-    <h1>
-        <%= foundList.name %>
-    </h1>
+        <h1>
+            <%= foundList.name %>
+        </h1>
 
-    <ul>
-        <% if (foundList.tasks.length> 0) { %>
-            <% foundList.tasks.forEach(task=> { %>
-                <li>
-                    <input type="checkbox" disabled <%=task.completed ? 'checked' : '' %> />
-                    <%= task.content %>
-                </li>
-                <% }) %>
-                    <% } else { %>
-                        <li>No tasks in this list yet.</li>
-                        <% } %>
-                            <a href="/lists/edit/<%= foundList._id %>">Edit</a>
-                            <form action="/lists/delete/<%= foundList._id %>?_method=DELETE" method="POST">
+        <ul>
+            <% if (foundList.tasks.length> 0) { %>
+                <% foundList.tasks.forEach(task=> { %>
+                    <li>
+                        <input type="checkbox" disabled <%=task.completed ? 'checked' : '' %> />
+                        <%= task.content %>
+                            <a href="/tasks/edit/<%= task._id %>">Edit</a>
+
+                            <form action="/tasks/delete/<%= task._id %>?_method=DELETE" method="POST">
                                 <button type="submit">Delete</button>
                             </form>
-                           
+                    </li>
+                    <% }) %>
+                        <% } else { %>
+                            <li>No tasks in this list yet.</li>
+                            <% } %>
 
-    </ul>
-    <a href="/auth/welcome">Home Page</a>
+
+
+
+        </ul>
+        <a href="/auth/welcome">Home Page</a>
 </body>
 
 </html>
