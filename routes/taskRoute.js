@@ -19,7 +19,7 @@ router.post('/new', async (req, res) => {
         const foundList = await List.findById(addTask.list)
         foundList.tasks.push(addTask._id)
         await foundList.save()
-        res.redirect(`/lists/${foundList._id}`) 
+        res.redirect(`/lists/${foundList._id}`)
     } catch (error) {
         console.log(error)
     }
@@ -47,7 +47,14 @@ router.get('/edit/:id', async (req, res) => {
 
 router.put('/edit/:id', async (req, res) => {
     try {
-        const updatedTask = await Task.findByIdAndUpdate({ _id: req.params.id, user: req.session.user._id }, req.body)
+        const completedValue = req.body.completed === 'on' ? true : false
+        const updatedTask = await Task.findByIdAndUpdate({ _id: req.params.id, user: req.session.user._id },
+            {
+                content: req.body.content,
+                dueAt: req.body.dueAt,
+                completed: completedValue,
+                list: req.body.list
+            }, { new: true })
         res.redirect('/auth/welcome')
     } catch (e) {
         console.log(e)
