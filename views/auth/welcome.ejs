@@ -3,12 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/welcomePage/main.css">
+    <style>
+    
+    main {
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+}
+
+.list-card {
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.list-card h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+ul {
+    padding-left: 1rem;
+}
+
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 2rem;
+}
+
+.list-card {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.list-card h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.list-card ul {
+    list-style: none;
+  padding-left: 1rem;
+}
+
+.list-card li {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+.inline-form {
+  display: inline;
+  margin-right: 8px;
+}
+
+</style>
 </head>
 <body>
   <%- include("../partials/navbar.ejs") %>
   <main>
-    
+      <% if (userLists.length > 0) { %>
+    <div class="list-grid">
+      <% userLists.forEach(list => { %>
+        <div class="list-card">
+          <h2><%= list.name %></h2>
+          <% if (list.tasks.length > 0) { %>
+            <ul>
+              <% list.tasks.forEach(task => { %>
+                <li>
+                 <form action="/tasks/<%= task._id %>/toggle" method="POST" class="inline-form">
+                <input type="checkbox" name="completed" <%= task.completed ? 'checked' : '' %> onchange="this.form.submit()" />
+                </form>
+                <strong><%= task.content %></strong> – <%= task.dueAt?.toLocaleDateString() %>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p>No tasks in this list yet.</p>
+          <% } %>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>You have no lists yet. <a href="/lists/new">Create one</a>.</p>
+  <% } %>
   </main>
 </body>
 </html>

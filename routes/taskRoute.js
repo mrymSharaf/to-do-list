@@ -48,7 +48,7 @@ router.get('/edit/:id', async (req, res) => {
 router.put('/edit/:id', async (req, res) => {
     try {
         const updatedTask = await Task.findByIdAndUpdate({ _id: req.params.id, user: req.session.user._id }, req.body)
-        res.redirect('/tasks')//change
+        res.redirect('/auth/welcome')
     } catch (e) {
         console.log(e)
     }
@@ -75,5 +75,20 @@ router.get('/:id', async (req, res) => {
         console.log(error)
     }
 })
+
+router.post('/:id/toggle', async (req, res) => {
+    try {
+        const task = await Task.findById(req.params.id)
+
+        task.completed = !task.completed
+        await task.save()
+
+        const listId = task.list
+        res.redirect(`/lists/${listId}`)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 module.exports = router

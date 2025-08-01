@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../models/User')
+const List = require('../models/List')
 const bcrypt = require('bcrypt')
 
 router.get('/signUp', (req, res) => {
@@ -61,7 +62,8 @@ router.get("/welcome", async (req, res) => {
     }
 
     try {
-        res.render("auth/welcome.ejs")
+        const userLists = await List.find({ user: req.session.user._id }).populate('tasks')
+        res.render("auth/welcome.ejs", { userLists })
     } catch (error) {
         console.log(error)
     }
