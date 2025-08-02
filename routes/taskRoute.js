@@ -25,14 +25,14 @@ router.post('/new', async (req, res) => {
     }
 })
 
-router.get('/', async (req, res) => {
-    try {
-        const allTasks = await Task.find({ user: req.session.user._id }).populate('list')
-        res.render('task/allTasks.ejs', { allTasks: allTasks })
-    } catch (error) {
-        console.log(error)
-    }
-})
+// router.get('/', async (req, res) => {
+//     try {
+//         const allTasks = await Task.find({ user: req.session.user._id }).populate('list')
+//         res.render('task/allTasks.ejs', { allTasks: allTasks })
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 
 router.get('/edit/:id', async (req, res) => {
     try {
@@ -55,7 +55,7 @@ router.put('/edit/:id', async (req, res) => {
                 completed: completedValue,
                 list: req.body.list
             }, { new: true })
-        res.redirect('/auth/welcome')
+        res.redirect('/auth/homepage')
     } catch (e) {
         console.log(e)
     }
@@ -68,7 +68,7 @@ router.delete('/delete/:id', async (req, res) => {
             _id: req.params.id,
             user: req.session.user._id
         })
-        res.redirect('/auth/welcome')
+        res.redirect('/auth/homepage')
     } catch (e) {
         console.log(e)
     }

@@ -46,7 +46,7 @@ router.post('/signUp', async (req, res) => {
             username: createdUser.username,
             _id: createdUser._id 
         }
-        res.redirect("/auth/welcome")
+        res.redirect("/auth/homepage")
 
     } catch (error) {
         console.error("Sign Up error:", error)
@@ -57,14 +57,14 @@ router.post('/signUp', async (req, res) => {
 })
 
 
-router.get("/welcome", async (req, res) => {
+router.get("/homepage", async (req, res) => {
     if (!req.session.user) {
         return res.redirect("/auth/login")
     }
 
     try {
         const userLists = await List.find({ user: req.session.user._id }).populate('tasks')
-        res.render("auth/welcome.ejs", { userLists })
+        res.render("auth/homepage.ejs", { userLists })
     } catch (error) {
         console.log(error)
     }
@@ -97,7 +97,7 @@ router.post('/login', async (req, res) => {
             _id: userInDatabase._id
         }
 
-        res.redirect("/auth/welcome")
+        res.redirect("/auth/homepage")
 
     } catch (error) {
         console.error("Error during sign in:", error)

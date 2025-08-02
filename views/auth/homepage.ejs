@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/homepage/main.css">
+    <link rel="stylesheet" href="/styles/navbar/main.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+</head>
+<body>
+  <div class="layout">
+    <%- include("../partials/navbar.ejs") %>
+
+    <main>
+      <% if (userLists.length > 0) { %>
+        <div class="list-grid">
+          <% userLists.forEach(list => { %>
+            <div class="list-card">
+              <h2><%= list.name %></h2>
+              <% if (list.tasks.length > 0) { %>
+                <ul>
+                  <% list.tasks.forEach(task => { %>
+                    <li>
+                      <form action="/tasks/<%= task._id %>/toggle" method="POST" class="inline-form">
+                        <input type="checkbox" name="completed" <%= task.completed ? 'checked' : '' %> onchange="this.form.submit()" />
+                      </form>
+                      <strong><%= task.content %></strong> – <%= task.dueAt?.toLocaleDateString() %>
+                    </li>
+                  <% }) %>
+                </ul>
+              <% } else { %>
+                <p>No tasks in this list.</p>
+              <% } %>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <section class="welcome-section">
+             <h1>Welcome, <%= user.username %></h1>
+             <p class="subtitle">Ready to stay organized and productive?</p>
+             <a href="/lists/new" class="start-btn">Start Planning</a>
+        </section>
+      <% } %>
+    </main>
+  </div>
+</body>
+</html>

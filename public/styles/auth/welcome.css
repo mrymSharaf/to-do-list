@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lexend:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Press+Start+2P&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Nunito", sans-serif;
+    background-color: #fff8f3;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.logo {
+    width: 250px;
+    margin-bottom: 13px;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    color: #ff8ecb;
+    margin-bottom: 30px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.button-group {
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    background-color: #ff8ecb;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid #ff8ecb;
+    color: #ff8ecb;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.features {
+    background-color: #ffeaf3;
+    padding: 50px 20px;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+
+.features h2 {
+    color: #ff8ecb;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.feature-box {
+    width: 250px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.feature-box i {
+    font-size: 2rem;
+    color: #ff8ecb;
+    margin-bottom: 10px;
+}
+
+.feature-box h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.feature-box p {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+footer {
+    background-color: #fff1f6;
+    padding: 20px;
+    text-align: center;
+    color: #aa7fa1;
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #d36ca3;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}

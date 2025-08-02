@@ -23,6 +23,11 @@ app.use(
         saveUninitialized: true,
     })
 )
+
+app.get('/', (req, res) => {
+    res.render('auth/welcome.ejs')
+})
+
 app.use(passUserToView)
 app.set("view engine", "ejs")
 app.use(loadUserLists)

@@ -21,7 +21,9 @@
         <% foundList.tasks.forEach(task => { %>
           <div class="task-item">
             <div class="task-content">
-              <input type="checkbox" disabled <%= task.completed ? 'checked' : '' %> />
+              <form action="/tasks/<%= task._id %>/toggle" method="POST" class="inline-form">
+                    <input type="checkbox" name="completed" <%= task.completed ? 'checked' : '' %> onchange="this.form.submit()" />
+            </form>
               <%= task.content %>
             </div>
             <div class="task-actions">

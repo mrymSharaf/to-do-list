@@ -16,20 +16,20 @@ router.post('/new', async (req, res) => {
             user: req.session.user._id
         })
         console.log("Creating list for user:", req.session.user)
-        res.redirect('/auth/welcome')
+        res.redirect('/auth/homepage')
     } catch (error) {
         console.log(error)
     }
 })
 
-router.get('/', async (req, res) => {
-    try {
-        const allLists = await List.find({ user: req.session.user._id })
-        res.render('list/allLists.ejs', { allLists: allLists })
-    } catch (error) {
-        console.log(error)
-    }
-})
+// router.get('/', async (req, res) => {
+//     try {
+//         const allLists = await List.find({ user: req.session.user._id })
+//         res.render('list/allLists.ejs', { allLists: allLists })
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 
 router.get('/edit/:id', async (req, res) => {
     try {
@@ -44,7 +44,7 @@ router.get('/edit/:id', async (req, res) => {
 router.put('/edit/:id', async (req, res) => {
     try {
         const updatedList = await List.findOneAndUpdate({ _id: req.params.id, user: req.session.user._id }, req.body, { new: true })
-        res.redirect('/auth/welcome')
+        res.redirect('/auth/homepage')
     } catch (e) {
         console.log(e)
     }
@@ -54,7 +54,7 @@ router.put('/edit/:id', async (req, res) => {
 router.delete('/delete/:id', async (req, res) => {
     try {
         const deletedList = await List.findOneAndDelete({ _id: req.params.id, user: req.session.user._id })
-        res.redirect('/auth/welcome')
+        res.redirect('/auth/homepage')
     } catch (e) {
         console.log(e)
     }
