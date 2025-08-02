@@ -19,7 +19,7 @@
         <input value="<%= foundTask.dueAt ? new Date(foundTask.dueAt).toISOString().split('T')[0] : '' %>" type="date" name="dueAt">
 
         <label for="completed">completed: </label>
-        <input value="<%= foundTask.completed  %>" <% if(foundTask.completed){ %> checked<% }%> type="checkbox" name="completed">
+        <input <% if(foundTask.completed){ %> checked<% }%> type="checkbox" name="completed">
 
          <button type="submit">Update</button>
     </form>
