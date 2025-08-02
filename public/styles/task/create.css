@@ -1,0 +1,52 @@
+.create-task-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    width: 80%;
+    max-width: 600px;
+    margin: 4rem auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-task-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.create-task-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.create-task-container label {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.create-task-container input[type="text"],
+.create-task-container input[type="date"],
+.create-task-container select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.create-task-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.create-task-container button:hover {
+    background-color: #0056b3;
+}
