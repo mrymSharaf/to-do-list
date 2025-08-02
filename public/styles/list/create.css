@@ -1,0 +1,51 @@
+ .create-list-container {
+     background: #fff;
+     border-radius: 16px;
+     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+     padding: 2.5rem;
+     width: 80%;
+     max-width: 600px;
+     margin: 4rem auto;
+     max-height: 400px;
+     display: flex;
+     flex-direction: column;
+ }
+
+ .create-list-container h1 {
+     font-size: 2rem;
+     margin-bottom: 1.5rem;
+     text-align: center;
+ }
+
+ .create-list-container form {
+     display: flex;
+     flex-direction: column;
+     gap: 1rem;
+ }
+
+ .create-list-container label {
+     font-size: 1.3rem;
+     font-weight: 600;
+ }
+
+ .create-list-container input[type="text"] {
+     padding: 0.5rem;
+     font-size: 1rem;
+     border: 1px solid #ccc;
+     border-radius: 6px;
+ }
+
+ .create-list-container button {
+     background-color: #007bff;
+     color: white;
+     border: none;
+     padding: 0.6rem 1rem;
+     font-size: 1rem;
+     border-radius: 6px;
+     cursor: pointer;
+     align-self: flex-end;
+ }
+
+ .create-list-container button:hover {
+     background-color: #0056b3;
+ }
