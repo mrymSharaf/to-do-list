@@ -68,7 +68,7 @@ router.delete('/delete/:id', async (req, res) => {
             _id: req.params.id,
             user: req.session.user._id
         })
-        res.redirect('/tasks')
+        res.redirect('/auth/welcome')
     } catch (e) {
         console.log(e)
     }

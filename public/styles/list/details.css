@@ -1,0 +1,118 @@
+.list-details-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding-bottom: 5rem;
+}
+
+.list-details-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    width: 80%;
+    max-width: 900px;
+    margin: 4rem auto;
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.task-list {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 0.5rem;
+}
+
+.task-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+.list-details-container h1 {
+    margin-top: 0;
+    font-size: 2.4rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.task-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.task-actions a,
+.task-actions button {
+    background: #e2e8f0;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: black;
+}
+
+.task-actions button:hover,
+.task-actions a:hover {
+    background: #cbd5e1;
+}
+
+.task-actions form {
+    display: inline;
+}
+
+.edit-task-btn {
+  background-color: #6c757d;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.edit-list-outside {
+    position: absolute;
+    bottom: -2.6rem;
+    right: 1rem;
+    margin-right: 3rem;
+}
+
+.edit-list-outside a {
+    background: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.edit-list-outside a:hover {
+    background: #0056b3;
+}
