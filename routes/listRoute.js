@@ -39,8 +39,8 @@ router.get('/edit/:id', async (req, res) => {
 
 router.put('/edit/:id', async (req, res) => {
     try {
-        const updatedList = await List.findByIdAndUpdate({ _id: req.params.id, user: req.session.user._id }, req.body)
-        res.redirect('/lists')
+        const updatedList = await List.findOneAndUpdate({ _id: req.params.id, user: req.session.user._id }, req.body, { new: true })
+        res.redirect('/auth/welcome')
     } catch (e) {
         console.log(e)
     }

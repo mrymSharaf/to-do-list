@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/navbar/main.css" />
+    <link rel="stylesheet" href="/styles/task/create.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
     <title>Update Task</title>
 </head>
 <body>
     <%- include("../partials/navbar.ejs") %>
+    <div class="create-task-container">
     <form action="/tasks/edit/<%= foundTask._id%>?_method=put" method="post">
         <label for="content"> Update task</label>
         <input value="<%= foundTask.content  %>" type="text" name="content">
 
         <label for="dueAt"> Due At: </label>
-        <input  value="<%= foundTask.dueAt  %>"  type="date" name="dueAt">
+        <input value="<%= foundTask.dueAt ? new Date(foundTask.dueAt).toISOString().split('T')[0] : '' %>" type="date" name="dueAt">
 
         <label for="completed">completed: </label>
         <input value="<%= foundTask.completed  %>" <% if(foundTask.completed){ %> checked<% }%> type="checkbox" name="completed">
 
          <button type="submit">Update</button>
     </form>
+    </div>
 </body>
 </html>
