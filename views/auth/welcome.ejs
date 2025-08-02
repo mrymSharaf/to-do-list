@@ -35,8 +35,11 @@
           <% }) %>
         </div>
       <% } else { %>
-        <h1>Welcome <%= user.username %></h1>
-        <a href="/lists/new">Start Planning</a>
+        <section class="welcome-section">
+             <h1>Welcome, <%= user.username %></h1>
+             <p class="subtitle">Ready to stay organized and productive?</p>
+             <a href="/lists/new" class="start-btn">Start Planning</a>
+        </section>
       <% } %>
     </main>
   </div>

@@ -43,7 +43,8 @@ router.post('/signUp', async (req, res) => {
 
         const createdUser = await User.create(newUser)
         req.session.user = {
-            username: createdUser.username
+            username: createdUser.username,
+            _id: createdUser._id 
         }
         res.redirect("/auth/welcome")
 

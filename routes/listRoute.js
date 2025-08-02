@@ -8,10 +8,14 @@ router.get('/new', (req, res) => {
 
 router.post('/new', async (req, res) => {
     try {
+        if (!req.session.user) {
+            return res.redirect('/auth/signUp')
+        }
         const addList = await List.create({
             name: req.body.name,
             user: req.session.user._id
         })
+        console.log("Creating list for user:", req.session.user)
         res.redirect('/auth/welcome')
     } catch (error) {
         console.log(error)
@@ -20,7 +24,7 @@ router.post('/new', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const allLists = await List.find(req.session.user._id)
+        const allLists = await List.find({ user: req.session.user._id })
         res.render('list/allLists.ejs', { allLists: allLists })
     } catch (error) {
         console.log(error)
@@ -49,7 +53,7 @@ router.put('/edit/:id', async (req, res) => {
 //add validation when the delete btn is clickd it askes the user if they are sure they want to delete because the task in the list would be deleteda
 router.delete('/delete/:id', async (req, res) => {
     try {
-        const deletedList = await List.findByIdAndDelete({ _id: req.params.id, user: req.session.user._id })
+        const deletedList = await List.findOneAndDelete({ _id: req.params.id, user: req.session.user._id })
         res.redirect('/auth/welcome')
     } catch (e) {
         console.log(e)
