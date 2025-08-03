@@ -91,7 +91,7 @@ router.post('/:id/toggle', async (req, res) => {
         await task.save()
 
         const listId = task.list
-        res.redirect(`/lists/${listId}`)
+        res.redirect('/auth/homepage')
     } catch (error) {
         console.log(error)
     }

@@ -15,7 +15,6 @@ router.post('/new', async (req, res) => {
             name: req.body.name,
             user: req.session.user._id
         })
-        console.log("Creating list for user:", req.session.user)
         res.redirect('/auth/homepage')
     } catch (error) {
         console.log(error)
@@ -50,7 +49,6 @@ router.put('/edit/:id', async (req, res) => {
     }
 })
 
-//add validation when the delete btn is clickd it askes the user if they are sure they want to delete because the task in the list would be deleteda
 router.delete('/delete/:id', async (req, res) => {
     try {
         const deletedList = await List.findOneAndDelete({ _id: req.params.id, user: req.session.user._id })

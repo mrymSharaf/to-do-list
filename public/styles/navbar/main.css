@@ -7,8 +7,9 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   background-color: #f2f2f2;
-  height: 100vh;
+  height: auto;
   display: flex;
+  min-height: 100vh;
 }
 
 .sidebar {
@@ -17,17 +18,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
   padding: 20px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  left: 0;
-  top: 0;
   overflow-y: auto;
-  position: sticky;
-  box-sizing: border-box;
   flex-shrink: 0;
-  top: 0;
 }
 
 .top-section {

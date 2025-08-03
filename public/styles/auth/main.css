@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lexend:wght@100..900&family=Press+Start+2P&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f6f9fc, #dbeafe);
+    background: linear-gradient(135deg, #f6f9fc, #d2e3fa);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -34,7 +36,7 @@ form {
 h1 {
     text-align: center;
     margin-bottom: 1rem;
-    color: #1e3a8a;
+    color: #3373c4;
 }
 
 label {
@@ -52,13 +54,13 @@ input[type="password"] {
 }
 
 input:focus {
-    border-color: #3b82f6;
+    border-color: #3a71b9;
     outline: none;
 }
 
 button {
     padding: 0.6rem;
-    background-color: #3b82f6;
+    background-color: #3373c4;
     color: white;
     font-weight: bold;
     border: none;
@@ -68,7 +70,7 @@ button {
 }
 
 button:hover {
-    background-color: #2563eb;
+    background-color: #3971ec;
 }
 
 .login-link {
@@ -76,7 +78,7 @@ button:hover {
     margin-top: 1rem;
     text-align: center;
     font-size: 0.9rem;
-    color: #2563eb;
+    color: #3373c4;
     text-decoration: none;
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
