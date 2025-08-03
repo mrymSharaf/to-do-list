@@ -24,13 +24,18 @@ app.use(
     })
 )
 
+app.set("view engine", "ejs")
+app.use(passUserToView)
+app.use(loadUserLists)
+
 app.get('/', (req, res) => {
-    res.render('auth/welcome.ejs')
+    if (req.session.user) {
+        return res.redirect('/auth/homepage')
+    } else {
+        res.render('auth/welcome.ejs', { user: null })
+    }
 })
 
-app.use(passUserToView)
-app.set("view engine", "ejs")
-app.use(loadUserLists)
 conntectToDB()
 
 
