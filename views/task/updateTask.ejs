@@ -11,17 +11,18 @@
 <body>
     <%- include("../partials/navbar.ejs") %>
     <div class="create-task-container">
+        <h1>Update Task</h1>
     <form action="/tasks/edit/<%= foundTask._id%>?_method=put" method="post">
-        <label for="content"> Update task</label>
+        <label for="content">Task Name</label>
         <input value="<%= foundTask.content  %>" type="text" name="content">
 
-        <label for="dueAt"> Due At: </label>
+        <label for="dueAt"> Due At </label>
         <input value="<%= foundTask.dueAt ? new Date(foundTask.dueAt).toISOString().split('T')[0] : '' %>" type="date" name="dueAt">
 
-        <label for="completed">completed: </label>
-        <input <% if(foundTask.completed){ %> checked<% }%> type="checkbox" name="completed">
+        <label for="completed">Completed </label>
+        <input <% if(foundTask.completed){ %> checked<% }%> type="checkbox" name="completed" >
 
-         <button type="submit">Update</button>
+         <button type="submit">Save</button>
     </form>
     </div>
 </body>

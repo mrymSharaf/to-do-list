@@ -14,7 +14,19 @@
   <%- include("../partials/navbar.ejs") %>
 
   <div class="list-details-container">
-    <h1><%= foundList.name %></h1>
+    <div class="list-header">
+      <h1><%= foundList.name %></h1>
+      <div class="list-actions">
+        <a href="/lists/edit/<%= foundList._id %>" class="icon-button" title="Edit List">
+          <i class="bi bi-pen"></i>
+        </a>
+        <form action="/lists/delete/<%= foundList._id %>?_method=DELETE" method="POST" class="delete-form">
+          <button type="submit" class="icon-button" title="Delete List">
+            <i class="bi bi-trash"></i>
+          </button>
+        </form>
+      </div>
+    </div>
 
     <div class="task-list">
       <% if (foundList.tasks.length > 0) { %>
@@ -22,8 +34,8 @@
           <div class="task-item">
             <div class="task-content">
               <form action="/tasks/<%= task._id %>/toggle" method="POST" class="inline-form">
-                    <input type="checkbox" name="completed" <%= task.completed ? 'checked' : '' %> onchange="this.form.submit()" />
-            </form>
+                <input type="checkbox" name="completed" <%= task.completed ? 'checked' : '' %> onchange="this.form.submit()" />
+              </form>
               <%= task.content %>
             </div>
             <div class="task-actions">
@@ -37,10 +49,6 @@
       <% } else { %>
         <p>No tasks in this list.</p>
       <% } %>
-    </div>
-
-    <div class="edit-list-outside">
-      <a href="/lists/edit/<%= foundList._id %>">Edit List</a>
     </div>
   </div>
 </body>

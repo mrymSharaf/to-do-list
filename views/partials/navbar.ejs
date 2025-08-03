@@ -16,7 +16,7 @@
           <li>
             <a href="/lists/<%= list._id %>"><%= list.name %></a>
             <form action="/lists/delete/<%= list._id %>?_method=DELETE" method="POST" class="delete-form">
-                <button type="submit" class="bi bi-trash3"></button>
+                <button type="submit"  class="delete-btn bi bi-trash"></button>
             </form>
           </li>
         <% }) %>
