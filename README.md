@@ -1,12 +1,12 @@
 # 🗓️✔️ JustDo 
 
-A user-friendly to-do list app built with the MEN stack (MongoDB, Express.js, Node.js). JustDo helps users manage their daily tasks with ease through lists, due dates, completion tracking, and an intuitive interface.
+A user-friendly to-do list website built with the MEN stack (MongoDB, Express.js, Node.js). JustDo helps users manage their daily tasks with ease through lists, due dates, completion tracking, and an intuitive interface.
 
 <img width="945" height="413" alt="Image" src="https://github.com/user-attachments/assets/ef17e1be-25bd-4030-b250-bdc74ded1833" />
 
 ---
 
-## 🌟 About the App
+## 🌟 About the Website
 
 JustDo lets users:
 - Register and log in securely
@@ -43,7 +43,7 @@ This website was built to practice full CRUD functionality using a Node.js backe
 
 ---
 
-## Challanges
+## 🧗🏽‍♂️ Challanges
 One of the biggest challenges I faced was keeping a task’s completed state in sync across multiple views (the homepage task list, the list details page, and the edit task overview). I needed a way for the user to check off a task from any of these three locations and have it immediately reflect everywhere without duplicating a bunch of logic.
 
 **The Problem**
@@ -51,7 +51,7 @@ One of the biggest challenges I faced was keeping a task’s completed state in 
  - Toggling a task needed to update the database and then refresh the user back to the correct page
  - I didn’t want to write three separate handlers or duplicate save logic in multiple places
 
-**The Solution** <br>
+**The Solution** <br><br>
   I created a single toggle route that flips the completed flag and then redirects the user to the home page.
 
 ```js
@@ -75,7 +75,7 @@ Then, in each of the three templates, I wired up the checkbox to submit to this 
      <input type="checkbox" name="completed" <%= task.completed ? 'checked' : '' %> onchange="this.form.submit()" />
 </form>
 ```
-This approach kept my code clean and ensured that toggling tasks felt consistent everywhere in the app.
+This approach kept my code clean and ensured that toggling tasks felt consistent everywhere in the website.
 
 ---
 
