@@ -21,15 +21,6 @@ router.post('/new', async (req, res) => {
     }
 })
 
-// router.get('/', async (req, res) => {
-//     try {
-//         const allLists = await List.find({ user: req.session.user._id })
-//         res.render('list/allLists.ejs', { allLists: allLists })
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
-
 router.get('/edit/:id', async (req, res) => {
     try {
         const foundList = await List.findOne({ _id: req.params.id, user: req.session.user._id })
