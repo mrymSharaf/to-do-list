@@ -1,8 +1,8 @@
-# JustDo 
-
-![](<img width="945" height="413" alt="Image" src="https://github.com/user-attachments/assets/285cd802-acc2-4166-9c86-7aa85835f8f7" />)
+# 🗓️✔️ JustDo 
 
 A user-friendly to-do list app built with the MEN stack (MongoDB, Express.js, Node.js). JustDo helps users manage their daily tasks with ease through lists, due dates, completion tracking, and an intuitive interface.
+
+<img width="945" height="413" alt="Image" src="https://github.com/user-attachments/assets/ef17e1be-25bd-4030-b250-bdc74ded1833" />
 
 ---
 
@@ -20,8 +20,7 @@ This website was built to practice full CRUD functionality using a Node.js backe
 ---
 
 ## 🚀 Getting Started
-- 🟢 [**Live Demo:**](https://justdo-wje5.onrender.com)
-- 📝 [**Planning Docs:**]()
+- 🟢 [**Live Demo**](https://justdo-wje5.onrender.com)
 
 ---
 
@@ -52,8 +51,8 @@ One of the biggest challenges I faced was keeping a task’s completed state in 
  - Toggling a task needed to update the database and then refresh the user back to the correct page
  - I didn’t want to write three separate handlers or duplicate save logic in multiple places
 
-**The Solution**
-I created a single toggle route that flips the completed flag and then redirects the user to the home page.
+**The Solution** <br>
+  I created a single toggle route that flips the completed flag and then redirects the user to the home page.
 
 ```js
 router.post('/:id/toggle', async (req, res) => {
@@ -80,7 +79,7 @@ This approach kept my code clean and ensured that toggling tasks felt consistent
 
 ---
 
-## Attributions
+## 🔗 Attributions
 - [Fonts](https://fonts.google.com/specimen/Nunito)
 - [Logo](https://logo.com/dashboard)
 - [Bootstrap Icons](https://icons.getbootstrap.com)
